@@ -1,9 +1,0 @@
-{
-    "codeium.enableCommandSideHintEducation": false,
-    "codeium.enableConfig": {
-
-        "*": true
-    },
-    "codeium.disableSupercomplete": false,
-    "codeium.snoozeTime": 1e+242
-}
