@@ -7,7 +7,7 @@ from autogen_agentchat.teams import RoundRobinGroupChat
 from autogen_agentchat.conditions import TextMentionTermination
 from dotenv import load_dotenv
 load_dotenv()
-from flask import Flask, jsonify
+from flask import Flask, jsonify,request
 from pyngrok import ngrok
 from flask_cors import CORS
 import requests
@@ -80,7 +80,7 @@ def root():
 @app.route('/run',methods=['POST'])
 def run():
     try:
-        data =requests.get_json()
+        data =request.get_json()
         task=data.get('task')
         
         if not task:
@@ -97,6 +97,6 @@ def run():
 if __name__=='__main__' :
     ngrok.set_auth_token(NGROK_AUTH_TOKEN)
     public_url=ngrok.connect(port).public_url
-    print(f"Public URL:{public_url}/api/hello \n\n")
+    print(f"Public URL:{public_url}/health \n\n")
     
     app.run(port=port)    
